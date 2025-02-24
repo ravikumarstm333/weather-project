@@ -18,8 +18,10 @@ body {
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     width: 90%;
+    height: 100%;
     max-width: 500px;
     text-align: center;
+    position: relative; /* For positioning the error popup */
 }
 
 .error-popup {
@@ -31,7 +33,7 @@ body {
     background-color: #fefefe;
     padding: 10px;
     border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 80%; /* Could be more or less, depending on screen size */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000; /* Ensure it sits on top */
@@ -185,9 +187,17 @@ body {
 
 /* Responsive Design */
 @media (max-width: 600px) {
+    body {
+        justify-content: flex-start;
+    }
+
     .container {
         width: 100%;
         border-radius: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .search-container {
@@ -205,5 +215,41 @@ body {
 
     .forecast-item {
         width: 80%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .container {
+        width: 80%;
+    }
+
+    .search-container {
+        flex-direction: row;
+    }
+
+    #forecast-list {
+        flex-direction: row;
+    }
+
+    .forecast-item {
+        width: 100px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .container {
+        width: 60%;
+    }
+
+    .search-container {
+        flex-direction: row;
+    }
+
+    #forecast-list {
+        flex-direction: row;
+    }
+
+    .forecast-item {
+        width: 100px;
     }
 }
