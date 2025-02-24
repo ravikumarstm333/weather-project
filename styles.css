@@ -1,0 +1,209 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    transition: background 0.5s ease; /* Smooth transition for background */
+}
+
+.container {
+    background: linear-gradient(135deg, #28292b, #6799eb);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.error-popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fefefe;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it sits on top */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#search-bar {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Soft, rounded edges */
+    font-size: 16px;
+}
+
+#search-button, #location-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px; /* Soft, rounded edges */
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 16px;
+}
+
+#search-button {
+    background: #1565C0; /* Deep Blue */
+    color: white;
+}
+
+#location-button {
+    background: #00ACC1; /* Vibrant Cyan */
+    color: white;
+}
+
+#search-button:hover, #location-button:hover {
+    opacity: 0.9;
+}
+
+/* Weather Display */
+.weather-display {
+    margin-bottom: 30px;
+}
+
+#city-name {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #fff; /* Bold White */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for contrast */
+}
+
+#weather-icon img {
+    width: 100px; /* Adjust the size as needed */
+    height: auto;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle drop shadow */
+}
+
+#temperature {
+    font-size: 3rem;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+#weather-description {
+    font-size: 1.6rem;
+    color: #363535;
+    font-weight: bold; /* Make the text bold */
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.weather-details p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.weather-details span {
+    font-weight: bold;
+    color: #333;
+}
+
+.weather-icon {
+    width: 20px; /* Adjust the size as needed */
+    height: auto;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Hourly Forecast */
+.hourly-forecast {
+    margin-top: 30px;
+}
+
+#forecast-list {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    gap: 10px;
+}
+
+.forecast-item {
+    color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 100px;
+    background: linear-gradient(135deg, #16171a, #6799eb);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-item p {
+    margin: 5px 0;
+}
+
+.forecast-item .weather-icon img {
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+    margin: 10px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle drop shadow */
+}
+
+.forecast-item strong {
+    font-size: 1.1rem;
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    #search-bar {
+        margin-bottom: 10px;
+    }
+
+    #forecast-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .forecast-item {
+        width: 80%;
+    }
+}

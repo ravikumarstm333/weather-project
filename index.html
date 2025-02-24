@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="initializeButtons()">
+    <div class="container">
+        <!-- Error message pop-up -->
+        <div id="error-popup" class="error-popup">
+            <span class="close-button" onclick="closePopup()">&times;</span>
+            <p id="error-text">City not found, please try again.</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Enter city name">
+            <button id="search-button">Search</button>
+            <button id="location-button">My Location</button>
+        </div>
+
+        <!-- Weather Display -->
+        <div class="weather-display">
+            <h1 id="city-name">City Name</h1>
+            <div id="weather-icon"><img src="images/clear.png" alt="Weather Icon"></div>
+            <p id="temperature">--°C</p>
+            <p id="weather-description">Weather Description</p>
+            <div class="weather-details">
+                <p><img src="images/wind.png" alt="Wind Icon" class="weather-icon"> <span>Wind:</span> <span id="wind-speed">-- km/h</span></p>
+                <p><img src="images/humidity.png" alt="Humidity Icon" class="weather-icon"> <span>Humidity:</span> <span id="humidity">--%</span></p>
+            </div>
+        </div>
+
+        <!-- Hourly Forecast -->
+        <div class="hourly-forecast">
+            <div id="forecast-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
