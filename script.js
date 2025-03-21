@@ -158,7 +158,9 @@ function updateForecast(data) {
 }
 
 // Function to show the error pop-up
-function showPopup() {
+function showPopup(message) {
+    const errorText = document.getElementById('error-text');
+    errorText.textContent = message;
     errorPopup.style.display = 'block';
 }
 
@@ -179,9 +181,11 @@ searchButton.addEventListener('click', async () => {
             closePopup(); // Hide error message if successful
             cityName.style.display = 'block'; // Show city name
         } catch (error) {
-            showPopup(); // Show error message
+            showPopup('City not found, please try again.'); // Show error message
             cityName.style.display = 'none'; // Hide city name
         }
+    } else {
+        showPopup('Please enter a city name.'); // Show error message if input is empty
     }
 });
 
@@ -189,15 +193,20 @@ locationButton.addEventListener('click', async () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const { latitude, longitude } = position.coords;
-            const response = await fetch(`${weatherApiUrl}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
-            const weatherData = await response.json();
-            const forecastData = await fetchForecast(weatherData.name);
-            updateWeather(weatherData);
-            updateForecast(forecastData);
-            closePopup(); // Hide error message if successful
-            cityName.style.display = 'block'; // Show city name
+            try {
+                const response = await fetch(`${weatherApiUrl}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
+                const weatherData = await response.json();
+                const forecastData = await fetchForecast(weatherData.name);
+                updateWeather(weatherData);
+                updateForecast(forecastData);
+                closePopup(); // Hide error message if successful
+                cityName.style.display = 'block'; // Show city name
+            } catch (error) {
+                showPopup('Unable to fetch weather data for your location.'); // Show error message
+                cityName.style.display = 'none'; // Hide city name
+            }
         });
     } else {
-        alert('Geolocation is not supported by your browser.');
+        showPopup('Geolocation is not supported by your browser.'); // Show error message
     }
 });
