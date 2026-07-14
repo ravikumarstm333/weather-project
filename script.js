@@ -10,11 +10,11 @@ const humidity = document.getElementById('humidity');
 const forecastList = document.getElementById('forecast-list');
 const errorPopup = document.getElementById('error-popup');
 
-const apiKey = 'a6d1db3c85c08141f7ae84bee8e2cdce'; // Replace with your weather API key
+const apiKey = 'a6d1db3c85c08141f7ae84bee8e2cdce'; 
 const weatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const forecastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 
-// Function to toggle button visibility
+
 function toggleButtons() {
     if (searchBar.value.trim()) {
         searchButton.style.display = 'inline-block';
@@ -25,13 +25,13 @@ function toggleButtons() {
     }
 }
 
-// Set initial button visibility when the page loads
+
 window.addEventListener('load', toggleButtons);
 
-// Update button visibility whenever the search bar content changes
+
 searchBar.addEventListener('input', toggleButtons);
 
-// Function to fetch weather data
+
 async function fetchWeather(city) {
     const response = await fetch(`${weatherApiUrl}?q=${city}&appid=${apiKey}&units=metric`);
     if (response.status !== 200) {
@@ -41,7 +41,7 @@ async function fetchWeather(city) {
     return data;
 }
 
-// Function to fetch hourly forecast
+
 async function fetchForecast(city) {
     const response = await fetch(`${forecastApiUrl}?q=${city}&appid=${apiKey}&units=metric`);
     const data = await response.json();
